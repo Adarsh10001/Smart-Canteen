@@ -16,7 +16,7 @@ public class StudentDashboard extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         JLabel welcomeLabel = new JLabel(
-            "Welcome, " + student.getName() + "!",
+            "Welcome, " + student.getName(),
             SwingConstants.CENTER
         );
         JButton menuButton = new JButton("View Menu");
@@ -28,7 +28,7 @@ public class StudentDashboard extends JFrame {
         panel.setBorder(
             BorderFactory.createEmptyBorder(40, 80, 40, 80)
         );
-
+        
         panel.add(welcomeLabel);
         panel.add(menuButton);
         panel.add(orderButton);

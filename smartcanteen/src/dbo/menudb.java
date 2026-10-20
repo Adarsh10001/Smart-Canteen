@@ -25,7 +25,7 @@ public class menudb {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        } 
     }
 
 public boolean addMenuItem(String name, String description,

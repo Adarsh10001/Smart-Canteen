@@ -20,9 +20,7 @@ public class Register extends JFrame {
         setLocationRelativeTo(null);
 
         JPanel panel = new JPanel(new GridLayout(4, 2, 10, 10));
-        panel.setBorder(
-            BorderFactory.createEmptyBorder(25, 25, 25, 25)
-        );
+        panel.setBorder(BorderFactory.createEmptyBorder(25, 25, 25, 25));
 
         nameField = new JTextField();
         emailField = new JTextField();

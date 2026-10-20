@@ -20,11 +20,8 @@ public class Login extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        JPanel panel = new JPanel(new GridLayout(3, 2, 30, 100));
-        panel.setBorder(
-            BorderFactory.createEmptyBorder(25, 25, 25, 25)
-        );
-
+        JPanel panel = new JPanel(new GridLayout(3, 2, 20, 100));
+        panel.setBorder(BorderFactory.createEmptyBorder(100, 150, 100, 150));
         emailField = new JTextField();
         passwordField = new JPasswordField();
 
@@ -59,18 +56,15 @@ loginButton.addActionListener(e -> {
     User user = userDB.loginUser(email, password);
 
     if (user instanceof Student) {
-        StudentDashboard dashboard =
-            new StudentDashboard((Student) user);
+        StudentDashboard dashboard =new StudentDashboard((Student) user);
 
         dashboard.setVisible(true);
         dispose();
     }
     else if (user instanceof Admin) {
-        AdminDashboard dashboard =
-            new AdminDashboard((Admin) user);
-
-    dashboard.setVisible(true);
-    dispose();
+        AdminDashboard dashboard =new AdminDashboard((Admin) user);
+        dashboard.setVisible(true);
+        dispose();
     }
     else {
         JOptionPane.showMessageDialog(
