@@ -73,20 +73,6 @@ public class Orderdb {
             return true;
         }
     }
-    private double getOrderTotal(int orderId) throws SQLException {
-        String sql =
-            "SELECT total_amount FROM orders WHERE order_id = ?";
-        try (Connection con = DBconnection.getConnection();
-            PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setInt(1, orderId);
-            try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) {
-                    return rs.getDouble("total_amount");
-                }
-            }
-        }
-        return 0.0;
-    }
     public boolean placeOrder(int userId, int[] itemIds, int[] quantities) {
         if (itemIds == null || quantities == null ||
             itemIds.length == 0 ||
