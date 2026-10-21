@@ -49,7 +49,6 @@ public class StudentDashboard extends JFrame {
                     item.getPrice()
                 });
             }
-
             JTable menuTable = new JTable(model);
             menuTable.setEnabled(false);
 
@@ -73,5 +72,4 @@ public class StudentDashboard extends JFrame {
             frame.setVisible(true);
         });
         }
-
-    }
+}

@@ -59,14 +59,12 @@ public class ManageOrders extends JFrame {
                 );
                 return;
             }
-
             int orderId = (int) model.getValueAt(selectedRow, 0);
 
             String[] statuses = {
                 "PLACED", "PREPARING", "READY",
                 "COMPLETED", "CANCELLED"
             };
-
             String status = (String) JOptionPane.showInputDialog(
                 this,
                 "Select the new order status:",
@@ -76,11 +74,9 @@ public class ManageOrders extends JFrame {
                 statuses,
                 model.getValueAt(selectedRow, 4)
             );
-
             if (status == null) {
                 return;
             }
-
             int confirm = JOptionPane.showConfirmDialog(
                 this,
                 "Change order #" + orderId + " to " + status + "?",
@@ -119,7 +115,6 @@ public class ManageOrders extends JFrame {
 
         loadOrders();
     }
-
     private void showOrderItems(int orderId) {
         String[] columns = {
             "Food Item", "Quantity",
@@ -135,18 +130,14 @@ public class ManageOrders extends JFrame {
                     return false;
                 }
             };
-
         String sql =
             "SELECT m.item_name, oi.quantity, oi.item_price " +
             "FROM order_items oi " +
             "LEFT JOIN menu_items m ON oi.item_id = m.item_id " +
             "WHERE oi.order_id = ?";
-
         try (Connection con = DBconnection.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
-
             ps.setInt(1, orderId);
-
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
                     String itemName = rs.getString("item_name");

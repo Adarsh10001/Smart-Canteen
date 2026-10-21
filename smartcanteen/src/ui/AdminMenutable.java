@@ -18,12 +18,7 @@ public class AdminMenutable extends JFrame {
             "Price (₹)", "Availability"
         };
         DefaultTableModel model =
-            new DefaultTableModel(columns, 0) {
-                @Override
-                public boolean isCellEditable(int row, int column) {
-                    return false;
-                }
-            };
+            new DefaultTableModel(columns, 0) ;
 
         menudb menuDB = new menudb();
         menu[] items = menuDB.getAllMenuItems();
