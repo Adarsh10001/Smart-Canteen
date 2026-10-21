@@ -30,3 +30,13 @@ CREATE TABLE order_items (
     CHECK (quantity > 0),
     CHECK (item_price >= 0)
 );
+CREATE TABLE orders (
+    order_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    total_amount DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+    status ENUM('PLACED', 'PREPARING', 'READY', 'COMPLETED', 'CANCELLED')
+        NOT NULL DEFAULT 'PLACED',
+
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
