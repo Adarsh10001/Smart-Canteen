@@ -31,11 +31,9 @@ public class ManageOrders extends JFrame {
         };
 
         table = new JTable(model);
-
         JButton refreshButton = new JButton("Refresh");
         JButton statusButton = new JButton("Change Status");
         JButton itemsButton = new JButton("View Items");
-
         refreshButton.addActionListener(e -> loadOrders());
 
         itemsButton.addActionListener(e -> {

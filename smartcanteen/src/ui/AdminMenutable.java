@@ -33,7 +33,7 @@ public class AdminMenutable extends JFrame {
                 item.getItemId(),
                 item.getItemName(),
                 item.getDescription(),
-                item.getPrice(),
+                item.getPrice(), 
                 item.isAvailable() ? "Available" : "Unavailable"
             });
         }

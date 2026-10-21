@@ -2,6 +2,7 @@
 package ui;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import model.Student;
 import dbo.menudb;
@@ -35,36 +36,29 @@ public class StudentDashboard extends JFrame {
         panel.add(myOrdersButton);
         panel.add(logoutButton);
         add(panel);
-        menuButton.addActionListener(e -> {
+         menuButton.addActionListener(e -> {
             menudb menuDB = new menudb();
             menu[] items = menuDB.getAvailableMenuItems();
 
-            JList<menu> menuList = new JList<>(items);
-            menuList.setSelectionMode(
-                ListSelectionModel.SINGLE_SELECTION
-            );
+            String[] columns = {"Item Name", "Price"};
+            DefaultTableModel model = new DefaultTableModel(columns, 0);
 
-            JScrollPane scrollPane = new JScrollPane(menuList);
+            for (menu item : items) {
+                model.addRow(new Object[]{
+                    item.getItemName(),
+                    item.getPrice()
+                });
+            }
 
-            int result = JOptionPane.showConfirmDialog(
+            JTable menuTable = new JTable(model);
+            menuTable.setEnabled(false);
+
+            JOptionPane.showMessageDialog(
                 this,
-                scrollPane,
+                new JScrollPane(menuTable),
                 "Available Food Items",
-                JOptionPane.OK_CANCEL_OPTION,
                 JOptionPane.PLAIN_MESSAGE
             );
-
-            if (result == JOptionPane.OK_OPTION) {
-                menu selectedItem = menuList.getSelectedValue();
-
-                if (selectedItem != null) {
-                    JOptionPane.showMessageDialog(
-                        this,
-                        "Selected: " + selectedItem.getItemName()
-                        + "\nPrice: ₹" + selectedItem.getPrice()
-                    );
-                }
-            }
         });
         orderButton.addActionListener(e -> {
             Orderscreen orderFrame = new Orderscreen(student);

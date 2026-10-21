@@ -36,7 +36,6 @@ public class Userdb {
             e.printStackTrace();
             return false;
         }
-    
     }
 public User loginUser(String email, String password) {
     String sql ="SELECT user_id, name, email, password, role " +
@@ -52,7 +51,6 @@ public User loginUser(String email, String password) {
                 String userEmail = rs.getString("email");
                 String userPassword = rs.getString("password");
                 String role = rs.getString("role");
-
                 if ("STUDENT".equals(role)) {
                     return new Student(userId, name, userEmail, userPassword);
                 } else if ("ADMIN".equals(role)) {
