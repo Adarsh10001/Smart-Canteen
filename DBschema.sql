@@ -1,5 +1,5 @@
 CREATE DATABASE smart_canteen;
-USE DATABASE smart_canteen;
+USE  smart_canteen;
 
 CREATE TABLE users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
