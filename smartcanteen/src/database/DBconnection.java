@@ -6,7 +6,7 @@ import java.sql.SQLException;
 public class DBconnection {
     private static final String URL ="jdbc:mysql://localhost:3306/smart_canteen";
     private static final String USER = "root";
-    private static final String PASSWORD = "500653";
+    private static final String PASSWORD = "<password>";
     private static final DBconnection instance =new DBconnection();
     private DBconnection() {
     }
