@@ -82,33 +82,6 @@ public class menudb {
             return false;
         }
     }
-
-    public void displayAvailableMenu() {
-        String sql =
-            "SELECT * FROM menu_items WHERE is_available = TRUE";
-        try (
-            Connection con = DBconnection.getConnection();
-            java.sql.Statement stmt = con.createStatement();
-            java.sql.ResultSet rs = stmt.executeQuery(sql)
-        ) {
-            System.out.println("MENU");
-            boolean found = false;
-            while (rs.next()) {
-                found = true;
-                System.out.println(
-                    rs.getInt("item_id") + ". " +
-                    rs.getString("item_name") +
-                    " - Rs. " + rs.getDouble("price")
-                );
-            }
-            if (!found) {
-                System.out.println("No food items are currently available.");
-            }
-        } catch (SQLException e) {
-            System.out.println("Could not retrieve available menu.");
-            e.printStackTrace();
-        }
-    }
     public menu[] getAvailableMenuItems() {
         java.util.ArrayList<menu> items =new java.util.ArrayList<>();
         String sql ="SELECT item_id, item_name, description, price, is_available " +
